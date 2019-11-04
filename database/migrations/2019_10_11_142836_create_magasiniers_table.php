@@ -21,6 +21,7 @@ class CreateMagasiniersTable extends Migration
             $table->string('identifiant')->unique();
             $table->string('password');
             $table->boolean('isOnline')->default(false);
+            $table->boolean('isActive')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

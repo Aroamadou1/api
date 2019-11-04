@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGererVentesTable extends Migration
+class CreateGererSortieMaisonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,28 +13,22 @@ class CreateGererVentesTable extends Migration
      */
     public function up()
     {
-        Schema::create('gerer_ventes', function (Blueprint $table) {
+        Schema::create('gerer_sortie_maisons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('admin_id')->nullable();
             $table->unsignedBigInteger('vendeur_id');
-            $table->unsignedBigInteger('vente_id');
+            $table->unsignedBigInteger('sortie_id');
             $table->unsignedTinyInteger('codeOperation');
             $table->timestamp('created_at');
-            $table->timestamp('confirmed_at')->nullable();
 
-            $table->foreign('admin_id')
-            ->references('id')
-            ->on('admins')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
             $table->foreign('vendeur_id')
             ->references('id')
             ->on('vendeurs')
             ->onDelete('restrict')
             ->onUpdate('restrict');
-            $table->foreign('vente_id')
+
+            $table->foreign('sortie_id')
             ->references('id')
-            ->on('ventes')
+            ->on('sortie_maisons')
             ->onDelete('restrict')
             ->onUpdate('restrict');
         });
@@ -47,6 +41,6 @@ class CreateGererVentesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gerer_ventes');
+        Schema::dropIfExists('gerer_sortie_maisons');
     }
 }

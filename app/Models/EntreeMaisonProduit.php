@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class GererVente extends Model
+class EntreeMaisonProduit extends Model
 {
-    //
+    use SoftDeletes;
     public $timestamps = false;
 }

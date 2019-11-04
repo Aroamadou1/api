@@ -17,7 +17,6 @@ class CreateValiderEntreesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('admin_id')->nullable();
             $table->unsignedBigInteger('entree_id');
-            $table->unsignedTinyInteger('codeOperation');
             $table->timestamp('created_at');
 
             $table->foreign('admin_id')

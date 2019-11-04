@@ -18,6 +18,7 @@ class CreatePorteursTable extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('contact')->unique();
+            $table->boolean('isActive')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

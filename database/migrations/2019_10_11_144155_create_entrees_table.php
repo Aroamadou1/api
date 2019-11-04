@@ -15,10 +15,12 @@ class CreateEntreesTable extends Migration
     {
         Schema::create('entrees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('fournisseur_id');
-            $table->integer('numero')->unique();
+            $table->unsignedBigInteger('fournisseur_id')->nullable();
+            $table->integer('numero')->nullable();
             $table->integer('quantiteTotale');
+            $table->boolean('status')->default(false);
             $table->timestamps();
+            $table->timestamp('confirmed_at')->nullable();
             $table->softDeletes();
         });
     }

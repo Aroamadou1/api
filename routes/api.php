@@ -108,6 +108,14 @@ Route::post('inventaireAdd', 'InventaireController@store');
 Route::post('inventaireUpdate', 'InventaireController@update');
 Route::post('inventaireDestroy', 'InventaireController@destroy');
 Route::post('inventaireRestore', 'InventaireController@restore');
+//INVENTAIRE MAISON
+Route::get('inventaireMaison', 'InventaireMaisonController@index');
+Route::get('inventaireMaisonTrash', 'InventaireMaisonController@trash');
+Route::get('inventaireMaison/{type}', 'InventaireMaisonController@show');
+Route::post('inventaireMaisonAdd', 'InventaireMaisonController@store');
+Route::post('inventaireMaisonUpdate', 'InventaireMaisonController@update');
+Route::post('inventaireMaisonDestroy', 'InventaireMaisonController@destroy');
+Route::post('inventaireMaisonRestore', 'InventaireMaisonController@restore');
 //ENTREE
 Route::get('entree', 'EntreeController@index');
 Route::get('entreeTrash', 'EntreeController@trash');
@@ -117,17 +125,36 @@ Route::post('entreeUpdate', 'EntreeController@update');
 Route::post('entreeDestroy', 'EntreeController@destroy');
 Route::post('entreeRestore', 'EntreeController@restore');
 Route::post('entreeValidate', 'EntreeController@validation');
-//VENTE
-Route::get('sortie', 'VenteController@index');
-Route::get('sortieTrash', 'VenteController@trash');
-Route::get('sortieSearch/{date}', 'VenteController@getByDate');
-Route::get('sortie/{type}', 'VenteController@show');
-Route::post('sortieAdd', 'VenteController@store');
-Route::post('sortieUpdate', 'VenteController@update');
-Route::post('sortieDestroy', 'VenteController@destroy');
-Route::post('sortieRestore', 'VenteController@restore');
-Route::post('sortieValidate', 'VenteController@validation');
+//ENTREE MAISON
+Route::get('entreeMaison', 'EntreeMaisonController@index');
+Route::get('entreeMaisonTrash', 'EntreeMaisonController@trash');
+Route::get('entreeMaison/{type}', 'EntreeMaisonController@show');
+Route::post('entreeMaisonAdd', 'EntreeMaisonController@store');
+Route::post('entreeMaisonUpdate', 'EntreeMaisonController@update');
+Route::post('entreeMaisonDestroy', 'EntreeMaisonController@destroy');
+Route::post('entreeMaisonRestore', 'EntreeMaisonController@restore');
+Route::post('entreeMaisonValidate', 'EntreeMaisonController@validation');
+//SORTIE
+Route::get('sortie', 'SortieController@index');
+Route::get('sortieTrash', 'SortieController@trash');
+Route::get('sortieSearch/{date}', 'SortieController@getByDate');
+Route::get('sortie/{type}', 'SortieController@show');
+Route::post('sortieAdd', 'SortieController@store');
+Route::post('sortieUpdate', 'SortieController@update');
+Route::post('sortieDestroy', 'SortieController@destroy');
+Route::post('sortieRestore', 'SortieController@restore');
+Route::post('sortieValidate', 'SortieController@validation');
 
+//SORTIE MAISON
+Route::get('sortieMaison', 'SortieMaisonController@index');
+Route::get('sortieMaisonTrash', 'SortieMaisonController@trash');
+Route::get('sortieMaisonSearch/{date}', 'SortieMaisonController@getByDate');
+Route::get('sortieMaison/{type}', 'SortieMaisonController@show');
+Route::post('sortieMaisonAdd', 'SortieMaisonController@store');
+Route::post('sortieMaisonUpdate', 'SortieMaisonController@update');
+Route::post('sortieMaisonDestroy', 'SortieMaisonController@destroy');
+Route::post('sortieMaisonRestore', 'SortieMaisonController@restore');
+Route::post('sortieMaisonValidate', 'SortieMaisonController@validation');
 
 //BILAN
 Route::get('bilan', 'BilanController@index');
@@ -136,7 +163,19 @@ Route::get('bilan/{type}', 'BilanController@getByDate');
 Route::post('bilanAdd', 'BilanController@store');
 Route::post('bilanUpdate', 'BilanController@update');
 Route::post('bilanDestroy', 'BilanController@destroy');
-Route::post('bilanRestore', 'BilanCon   troller@restore');
+Route::post('bilanRestore', 'BilanController@restore');
+
+
+//BILAN MAISON
+Route::get('bilanMaison', 'BilanMaisonController@index');
+Route::get('bilanMaisonTrash', 'BilanMaisonController@trash');
+Route::get('bilanMaison/{type}', 'BilanMaisonController@getByDate');
+Route::post('bilanMaisonAdd', 'BilanMaisonController@store');
+Route::post('bilanMaisonUpdate', 'BilanMaisonController@update');
+Route::post('bilanMaisonDestroy', 'BilanMaisonController@destroy');
+Route::post('bilanMaisonRestore', 'BilanMaisonController@restore');
+
+
 //STATS
 Route::get('stat', 'StatController@index');
 Route::get('statTrash', 'StatController@trash');
@@ -145,6 +184,15 @@ Route::post('statAdd', 'StatController@store');
 Route::post('statUpdate', 'StatController@update');
 Route::post('statDestroy', 'StatController@destroy');
 Route::post('statRestore', 'StatController@restore');
+
+//STATS MAISON
+Route::get('statMaison', 'StatMaisonController@index');
+Route::get('statMaisonTrash', 'StatMaisonController@trash');
+Route::get('statMaison/{date}', 'StatMaisonController@getByDate');
+Route::post('statMaisonAdd', 'StatMaisonController@store');
+Route::post('statMaisonUpdate', 'StatMaisonController@update');
+Route::post('statMaisonDestroy', 'StatMaisonController@destroy');
+Route::post('statMaisonRestore', 'StatMaisonController@restore');
 //NOTIFICATIONS
 Route::get('notification', 'NotificationController@index');
 Route::get('notification/{date}', 'NotificationController@getByDate');
@@ -153,35 +201,3 @@ Route::get('data/{fonction}/{userId}/{notificationId}', 'DataController@check');
 Route::get('data/{fonction}/{id}', 'DataController@all');
 
 
-
-
-// Route::resource('vendeur', 'VendeurController');
-// Route::post('vendeurlogin', 'VendeurController@auth');
-// Route::resource('magasinier', 'MagasinierController');
-// Route::post('magasinierlogin', 'MagasinierController@auth');
-// Route::resource('porteur', 'PorteurController');
-// Route::resource('fournisseur', 'FournisseurController');
-// Route::resource('categorie', 'CategorieController');
-// Route::resource('produit', 'ProduitController');
-// Route::resource('inventaire', 'InventaireController');
-// Route::post('editInventaire', 'VenteController@edit');
-// Route::resource('vente', 'VenteController');
-// Route::post('editvente', 'VenteController@edit');
-// Route::resource('sortie', 'VenteController');
-// Route::post('validateSortie', 'VenteController@validation');
-// Route::get('sortieSearch/{date}', 'VenteController@getByDate');
-
-// Route::resource('entree', 'EntreeController');
-// Route::post('editEntree', 'EntreeController@edit');
-// Route::get('entreeSearch/{date}', 'EntreeController@getByDate');
-// Route::post('validateEntree', 'EntreeController@validation');
-// Route::get('auth', 'AuthController@index');
-// Route::get('stats', 'StatsController@index');
-// Route::get('notification', 'NotificationController@index');
-// Route::get('notificationSearch/{date}', 'NotificationController@getByDate');
-// Route::get('notification/{fonction}', 'NotificationController@getByFonction');
-// Route::get('bilan/{date}', 'BilanController@getByDate');
-// Route::post('bilan', 'BilanController@store');
-// Route::get('bilan', 'BilanController@index');
-// Route::get('stat', 'StatController@index');
-// Route::get('searchStat/{date}', 'StatController@getByDate');

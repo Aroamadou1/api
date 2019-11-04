@@ -16,10 +16,12 @@ class CreateSortiesTable extends Migration
         Schema::create('sorties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('numero')->unique();
-            $table->string('nomClient');
+            $table->string('nomClient')->nullable();
             $table->string('contactClient');
             $table->integer('quantiteTotale');
+            $table->boolean('status')->default(false);
             $table->timestamps();
+            $table->timestamp('sortie_at')->nullable();
             $table->softDeletes();
         });
     }

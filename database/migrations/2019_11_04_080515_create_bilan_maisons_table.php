@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBilansTable extends Migration
+class CreateBilanMaisonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBilansTable extends Migration
      */
     public function up()
     {
-        Schema::create('bilans', function (Blueprint $table) {
+        Schema::create('bilan_maisons', function (Blueprint $table) {
             $table->unsignedBigInteger('categorieNom');
             $table->string('produitNom');
             $table->integer('quantiteStock')->default(0);
@@ -29,6 +29,6 @@ class CreateBilansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bilans');
+        Schema::dropIfExists('bilan_maisons');
     }
 }

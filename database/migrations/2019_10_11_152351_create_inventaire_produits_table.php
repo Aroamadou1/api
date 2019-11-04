@@ -20,7 +20,7 @@ class CreateInventaireProduitsTable extends Migration
             $table->integer('quantiteStock');
             $table->integer('quantiteReel');
             $table->integer('quantiteCompte');
-            $table->integer('status')->nullable();
+            $table->boolean('isAjusted')->nullable();
             $table->timestamp('created_at');
             $table->softDeletes();
 

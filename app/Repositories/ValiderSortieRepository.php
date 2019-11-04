@@ -1,23 +1,23 @@
 <?php
 namespace App\Repositories;
 
-use App\Models\ValiderEntree;
+use App\Models\ValiderSortie;
 use Illuminate\Support\Facades\DB;
 
-class ValiderEntreeRepository
+class ValiderSortieRepository
 {
 
     protected $obj;
-	private $adminId;
-    public function __construct(validerEntree $obj)
+	private $magasinierId;
+    public function __construct(validerSortie $obj)
 	{
 		$this->obj = $obj;
 	}
 
-    private function save(validerEntree $obj, Array $data)
+    private function save(validerSortie $obj, Array $data)
 	{
-		$obj->admin_id =$data['admin_id'];
-		$obj->entree_id =$data['entree_id'];
+		$obj->magasinier_id =$data['magasinier_id'];
+		$obj->sortie_id =$data['sortie_id'];
 		$obj->save();
 	}
 
@@ -28,11 +28,11 @@ class ValiderEntreeRepository
 	
 	public function getHistoriques($id)
 	{
-		return DB::table('validerEntrees')
-		->join('admins', 'validerEntrees.admin_id', '=', 'admins.id')
-		->select('validerEntrees.*', 'admins.nom', 'admins.prenom')
-		->where('validerEntrees.entree_id', $id)
-		->orderByDesc('validerEntrees.created_at')
+		return DB::table('valider_sorties')
+		->join('magasiniers', 'valider_sorties.magasinier_id', '=', 'magasiniers.id')
+		->select('valider_sorties.*', 'magasiniers.nom', 'magasiniers.prenom')
+		->where('valider_sorties.sortie_id', $id)
+		->orderByDesc('valider_sorties.created_at')
 		->get();
 	}
     

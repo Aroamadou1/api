@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGererSortiesTable extends Migration
+class CreateGererInventaireMaisonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,21 @@ class CreateGererSortiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('gerer_sorties', function (Blueprint $table) {
+        Schema::create('gerer_inventaire_maisons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('vendeur_id');
-            $table->unsignedBigInteger('sortie_id');
+            $table->unsignedBigInteger('admin_id');
+            $table->unsignedBigInteger('inventaire_id');
             $table->unsignedTinyInteger('codeOperation');
             $table->timestamp('created_at');
 
-            $table->foreign('vendeur_id')
+            $table->foreign('admin_id')
             ->references('id')
-            ->on('vendeurs')
+            ->on('admins')
             ->onDelete('restrict')
             ->onUpdate('restrict');
-
-            $table->foreign('sortie_id')
+            $table->foreign('inventaire_id')
             ->references('id')
-            ->on('sorties')
+            ->on('inventaire_maisons')
             ->onDelete('restrict')
             ->onUpdate('restrict');
         });
@@ -41,6 +40,6 @@ class CreateGererSortiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gerer_sorties');
+        Schema::dropIfExists('gerer_inventaire_maisons');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInventairesTable extends Migration
+class CreateSortieMaisonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateInventairesTable extends Migration
      */
     public function up()
     {
-        Schema::create('inventaires', function (Blueprint $table) {
+        Schema::create('sortie_maisons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('motif');
+            $table->integer('numero')->unique();
+            $table->string('nomClient');
+            $table->string('contactClient');
+            $table->integer('quantiteTotale');
+            $table->boolean('status')->default(false);
             $table->timestamps();
+            $table->timestamp('sortie_at')->nullable();
             $table->softDeletes();
         });
     }
@@ -28,6 +33,6 @@ class CreateInventairesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventaires');
+        Schema::dropIfExists('sortie_maisons');
     }
 }

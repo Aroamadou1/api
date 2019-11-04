@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVentesTable extends Migration
+class CreateEntreeMaisonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateVentesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ventes', function (Blueprint $table) {
+        Schema::create('entree_maisons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('numero')->unique();
-            $table->string('nomClient');
-            $table->string('contactClient');
+            $table->unsignedBigInteger('fournisseur_id')->nullable();
+            $table->integer('numero')->nullable();
             $table->integer('quantiteTotale');
+            $table->boolean('status')->default(false);
             $table->timestamps();
+            $table->timestamp('confirmed_at')->nullable();
             $table->softDeletes();
         });
     }
@@ -31,6 +32,6 @@ class CreateVentesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ventes');
+        Schema::dropIfExists('entree_maisons');
     }
 }

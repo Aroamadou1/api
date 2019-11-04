@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGererSortiesTable extends Migration
+class CreateSortieMaisonProduitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,24 @@ class CreateGererSortiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('gerer_sorties', function (Blueprint $table) {
+        Schema::create('sortie_maison_produits', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('vendeur_id');
             $table->unsignedBigInteger('sortie_id');
-            $table->unsignedTinyInteger('codeOperation');
+            $table->unsignedBigInteger('produit_id');
+            $table->integer('quantite');
             $table->timestamp('created_at');
+            $table->softDeletes();
 
-            $table->foreign('vendeur_id')
-            ->references('id')
-            ->on('vendeurs')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
-
+        
             $table->foreign('sortie_id')
             ->references('id')
-            ->on('sorties')
+            ->on('sortie_maisons')
+            ->onDelete('restrict')
+            ->onUpdate('restrict');
+           
+            $table->foreign('produit_id')
+            ->references('id')
+            ->on('produits')
             ->onDelete('restrict')
             ->onUpdate('restrict');
         });
@@ -41,6 +43,6 @@ class CreateGererSortiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gerer_sorties');
+        Schema::dropIfExists('sortie_maison_produits');
     }
 }

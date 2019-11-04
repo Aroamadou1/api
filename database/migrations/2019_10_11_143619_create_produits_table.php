@@ -17,10 +17,7 @@ class CreateProduitsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('categorie_id');
             $table->string('nom')->unique();
-            $table->integer('quantiteStock')->default(0);
-            $table->integer('quantiteReel')->default(0);
             $table->integer('quantiteCritique')->default(0);
-            $table->boolean('isChecking')->default(0);
             $table->timestamps();
             $table->softDeletes();
             

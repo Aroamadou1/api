@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVentePorteursTable extends Migration
+class CreateSortieMaisonPorteursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateVentePorteursTable extends Migration
      */
     public function up()
     {
-        Schema::create('vente_porteurs', function (Blueprint $table) {
+        Schema::create('sortie_maison_porteurs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('vente_id');
+            $table->unsignedBigInteger('sortie_id');
             $table->unsignedBigInteger('porteur_id');
             $table->boolean('isChecked')->default(false);
 
@@ -24,12 +24,11 @@ class CreateVentePorteursTable extends Migration
             ->on('porteurs')
             ->onDelete('restrict')
             ->onUpdate('restrict');
-            $table->foreign('vente_id')
+            $table->foreign('sortie_id')
             ->references('id')
-            ->on('ventes')
+            ->on('sortie_maisons')
             ->onDelete('restrict')
             ->onUpdate('restrict');
-         
         });
     }
 
@@ -40,6 +39,6 @@ class CreateVentePorteursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vente_porteurs');
+        Schema::dropIfExists('sortie_maison_porteurs');
     }
 }

@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class VenteProduit extends Model
+class GererInventaireMaison extends Model
 {
     //
-    use SoftDeletes;
     public $timestamps = false;
 }
-

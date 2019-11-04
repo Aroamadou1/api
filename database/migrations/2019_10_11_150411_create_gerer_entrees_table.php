@@ -15,18 +15,11 @@ class CreateGererEntreesTable extends Migration
     {
         Schema::create('gerer_entrees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('admin_id')->nullable();
             $table->unsignedBigInteger('magasinier_id');
             $table->unsignedBigInteger('entree_id');
             $table->unsignedTinyInteger('codeOperation');
             $table->timestamp('created_at');
-            $table->timestamp('confirmed_at')->nullable();
 
-            $table->foreign('admin_id')
-            ->references('id')
-            ->on('admins')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
             $table->foreign('magasinier_id')
             ->references('id')
             ->on('magasiniers')
